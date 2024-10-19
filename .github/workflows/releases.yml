@@ -27,7 +27,7 @@ jobs:
       - name: Create release
         uses: softprops/action-gh-release@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         with:
           name: ${{ github.ref }}
           body_path: ${{ github.event_name == 'schedule' && 'RELEASE_NOTE.md' || '/dev/null' }}
