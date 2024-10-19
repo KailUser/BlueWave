@@ -27,9 +27,9 @@
       "artifactName": "BlueWave-mac.dmg"
     },
     "linux": {
-      "target": "flatpak",
+      "target": "Snap",
       "icon": "./src/assets/icon.png",
-      "artifactName": "BlueWave-linux-x64.flatpak",
+      "artifactName": "BlueWave-linux-x64.snap",
       "maintainer": "Syirezz",
       "category": "Utility"
     }

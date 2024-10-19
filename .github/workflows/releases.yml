@@ -26,23 +26,11 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y wine64 wine32
 
-      - name: Install Flatpak and Flatpak Builder
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y flatpak flatpak-builder
-          sudo flatpak --version
-
-      - name: Add Flathub repository
-        run: flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-
-      # - name: Build for macOS
-      #   run: npm run build_mac
+      - name: Build for Linux
+        run: npm run build_linux
 
       - name: Build for Windows
         run: npm run build_win
-
-      - name: Build for Linux
-        run: npm run build_linux -- --verbose  # Add verbose logging here
 
       - name: Create release
         uses: softprops/action-gh-release@v1
@@ -52,4 +40,4 @@ jobs:
           draft: true
           files: |
             dist/BlueWave-win32-ia32.zip
-            dist/BlueWave-linux-x64.flatpak
+            dist/BlueWave-linux-x64.snap
