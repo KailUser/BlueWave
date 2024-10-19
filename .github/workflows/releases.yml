@@ -1,0 +1,36 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build for macOS
+        run: npm run build_mac
+
+      - name: Build for Windows
+        run: npm run build_win
+
+      - name: Build for Linux
+        run: npm run build_linux
+
+      - name: Create release
+        uses: softprops/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RELEASE_NAME: ${{ github.ref }}
+          RELEASE_BODY_PATH: ${{ github.event_name != 'schedule' ? '/dev/null' : 'RELEASE_NOTE.md' }}
+          FILES: |
+            dist/BlueWave-mac.zip
+            dist/BlueWave-win32-ia32.zip
+            dist/BlueWave-linux-x64.deb
