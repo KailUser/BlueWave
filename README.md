@@ -1,3 +1,4 @@
+![Banner](assets/banner.png)
 # BlueWave - Unofficial Desktop Version of BlueSky
 
 **BlueWave** is an unofficial adaptation of BlueSky redesigned for desktop environments using Electron.
