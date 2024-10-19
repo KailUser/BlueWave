@@ -27,11 +27,11 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y wine64 wine32
 
-      # Install Flatpak
-      - name: Install Flatpak
+      # Install Flatpak and Flatpak Builder
+      - name: Install Flatpak and Flatpak Builder
         run: |
           sudo apt-get update
-          sudo apt-get install -y flatpak
+          sudo apt-get install -y flatpak flatpak-builder
 
       # - name: Build for macOS
       #   run: npm run build_mac
