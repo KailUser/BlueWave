@@ -1,0 +1,29 @@
+{
+  "name": "bluewave",
+  "version": "0.0.1-a",
+  "description": "Unofficial version of BlueSky for desktop computers.",
+  "main": "./src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build_mac": "electron-builder build",
+    "build_win": "electron-builder build --win",
+    "build_linux": "electron-builder build --linux"
+  },
+  "author": "Syirezz",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^33.0.1",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+  "win": {
+    "icon": "./src/assets/icon.png"
+  },
+  "mac": {
+    "icon": "./src/assets/icon.png"
+  },
+  "linux": {
+    "icon": "./src/assets/icon.png"
+  }
+}
+}
