@@ -49,9 +49,6 @@ function NewNotification(title, message) {
 
 app.on('ready', () => {
   // NewNotification("BlueWave", "Application is ready!");
-  console.log("Preloade: " + process.argv.find((arg) => arg.startsWith('--inject='))
-  ? path.join(process.argv.find((arg) => arg.startsWith('--inject=')).split('=')[1])
-  : undefined);
   createWindow();
 });
 
