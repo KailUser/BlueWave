@@ -5,7 +5,7 @@
   "main": "./src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build_mac": "electron-builder build",
+    "build_mac": "electron-builder build --mac",
     "build_win": "electron-builder build --win",
     "build_linux": "electron-builder build --linux"
   },
