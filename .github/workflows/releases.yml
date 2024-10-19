@@ -36,6 +36,6 @@ jobs:
           body_path: ${{ github.event_name == 'schedule' && 'RELEASE_NOTE.md' || '/dev/null' }}
           draft: true
           files: |
-            dist/BlueWave-mac.zip
+            dist/BlueWave-mac.dmg
             dist/BlueWave-win32-ia32.zip
-            dist/BlueWave-linux-x64.deb
+            dist/BlueWave-linux-x64.AppImage
