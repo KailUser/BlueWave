@@ -20,9 +20,12 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      # Install wine for signing Windows builds
+      # Enable multiarch and install wine32 and wine64
       - name: Install wine
-        run: sudo apt-get install -y wine
+        run: |
+          sudo dpkg --add-architecture i386
+          sudo apt-get update
+          sudo apt-get install -y wine64 wine32
 
       # - name: Build for macOS
       #   run: npm run build_mac
