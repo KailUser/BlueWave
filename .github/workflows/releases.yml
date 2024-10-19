@@ -11,7 +11,7 @@ jobs:
   build-and-release:
     runs-on: ubuntu-latest
     env:
-      GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}  # Export the GH_TOKEN globally for all steps
+      GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
     steps:
       - name: Checkout code
@@ -20,18 +20,20 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      # Enable multiarch and install wine32 and wine64
       - name: Install wine
         run: |
           sudo dpkg --add-architecture i386
           sudo apt-get update
           sudo apt-get install -y wine64 wine32
 
-      # Install Flatpak and Flatpak Builder
       - name: Install Flatpak and Flatpak Builder
         run: |
           sudo apt-get update
           sudo apt-get install -y flatpak flatpak-builder
+          sudo flatpak --version
+
+      - name: Add Flathub repository
+        run: flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
       # - name: Build for macOS
       #   run: npm run build_mac
@@ -40,7 +42,7 @@ jobs:
         run: npm run build_win
 
       - name: Build for Linux
-        run: npm run build_linux
+        run: npm run build_linux -- --verbose  # Add verbose logging here
 
       - name: Create release
         uses: softprops/action-gh-release@v1
@@ -50,4 +52,4 @@ jobs:
           draft: true
           files: |
             dist/BlueWave-win32-ia32.zip
-            dist/BlueWave-linux-x64.AppImage
+            dist/BlueWave-linux-x64.flatpak
