@@ -30,7 +30,7 @@
       "target": "flatpak",
       "icon": "./src/assets/icon.png",
       "artifactName": "BlueWave-linux-x64.flatpak",
-      "email": "syirezz@icloud.com"
+      "maintainer": "Syirezz"
     }
   }
 }
