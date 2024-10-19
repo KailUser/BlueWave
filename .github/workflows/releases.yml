@@ -8,15 +8,12 @@ on:
 jobs:
   build-and-release:
     runs-on: macos-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}  # Export the GH_TOKEN globally for all steps
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-
-      - name: Export GH_TOKEN
-        uses: ./.github/actions/export-env-variable
-        with:
-          name: GH_TOKEN
-          value: ${{ secrets.GH_TOKEN }}
 
       - name: Install dependencies
         run: npm install
@@ -31,7 +28,7 @@ jobs:
         run: npm run build_linux
 
       - name: Create release
-        uses: ./.github/actions/create-release
+        uses: softprops/action-gh-release@v1
         with:
           name: ${{ github.ref }}
           body_path: ${{ github.event_name == 'schedule' && 'RELEASE_NOTE.md' || '/dev/null' }}
