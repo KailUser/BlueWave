@@ -11,6 +11,7 @@ function createWindow() {
     height: 700,
     minWidth: 800,
     minHeight: 700,
+    show: false,
     webPreferences: {
       contextIsolation: true,
       preload: process.argv.find((arg) => arg.startsWith('--inject='))
@@ -18,11 +19,16 @@ function createWindow() {
         : undefined
     },
     icon: path.join(__dirname, '/assets/icon.png'),
+    menu: null
   });
 
   let url = `https://bsky.app`;
 
   win.loadURL(url);
+
+  win.once('ready-to-show', () => {
+    win.show();
+  });
 
   win.on('closed', () => {
     win = null;

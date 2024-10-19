@@ -27,9 +27,9 @@
       "artifactName": "BlueWave-mac.dmg"
     },
     "linux": {
-      "target": "AppImage",
+      "target": "flatpak",
       "icon": "./src/assets/icon.png",
-      "artifactName": "BlueWave-linux-x64.AppImage",
+      "artifactName": "BlueWave-linux-x64.flatpak",
       "maintainer": "Syirezz",
       "category": "Utility"
     }

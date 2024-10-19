@@ -9,7 +9,7 @@ on:
 
 jobs:
   build-and-release:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     env:
       GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}  # Export the GH_TOKEN globally for all steps
 
@@ -20,8 +20,8 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build for macOS
-        run: npm run build_mac
+      # - name: Build for macOS
+      #   run: npm run build_mac
 
       - name: Build for Windows
         run: npm run build_win
@@ -36,6 +36,5 @@ jobs:
           body_path: ${{ github.event_name == 'schedule' && 'RELEASE_NOTE.md' || '/dev/null' }}
           draft: true
           files: |
-            dist/BlueWave-mac.dmg
             dist/BlueWave-win32-ia32.zip
             dist/BlueWave-linux-x64.AppImage
