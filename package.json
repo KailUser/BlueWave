@@ -24,7 +24,7 @@
     "mac": {
       "target": "dmg",
       "icon": "./src/assets/icon.png",
-      "artifactName": "BlueWave-mac.zip"
+      "artifactName": "BlueWave-mac.dmg"
     },
     "linux": {
       "target": "deb",
